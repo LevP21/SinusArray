@@ -18,7 +18,7 @@
      ```
    - Для массива типа `float`:
      ```sh
-     cmake -S ./ -B ./build -DFLOAT
+     cmake -S ./ -B ./build -DFLOAT=ON
      ```
 2. Соберите проект:
    ```sh
