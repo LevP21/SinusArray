@@ -6,39 +6,35 @@
 #define NUM 10000000
 
 #ifdef FLOAT
-    int main() {
-        std::vector<float> arr;
+#define ARR_TYPE float
+#else
+#define ARR_TYPE double
+#endif
 
-        for (int i = 0; i < NUM; ++i) {
-            arr.push_back(std::sinf(2 * M_PI / NUM * (i+1)));
-        }
+int main()
+{
+    std::vector<ARR_TYPE> arr;
 
-        float result{0};
-
-        for (int i = 0; i < NUM; ++i) {
-            result += arr[i];
-        }
-
-        std::cout << result << std::endl;
-
-        return 0;
+#ifdef FLOAT
+    for (int i = 0; i < NUM; ++i)
+    {
+        arr.push_back(std::sinf(2 * M_PI / NUM * (i + 1)));
     }
 #else
-    int main() {
-        std::vector<double> arr;
-
-        for (int i = 0; i < NUM; ++i) {
-            arr.push_back(std::sin(2 * M_PI / NUM * (i+1)));
-        }
-
-        double result{0};
-
-        for (int i = 0; i < NUM; ++i) {
-            result += arr[i];
-        }
-
-        std::cout << result << std::endl;
-
-        return 0;
+    for (int i = 0; i < NUM; ++i)
+    {
+        arr.push_back(std::sin(2 * M_PI / NUM * (i + 1)));
     }
 #endif
+
+    ARR_TYPE result{0};
+
+    for (int i = 0; i < NUM; ++i)
+    {
+        result += arr[i];
+    }
+
+    std::cout << result << std::endl;
+
+    return 0;
+}
